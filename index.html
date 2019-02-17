@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MathBirthdays</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.css" />
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap.material-design/4.0.2/bootstrap-material-design.css">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/ripples.min.css">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
+
+    <style>
+        html,body{
+        	width: 100%;
+        	height: 100%;
+        }
+        html, body, main, input, label, div, footer {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        h4{
+        	letter-spacing: 1px;
+        }
+        .uib-datepicker table {
+		    min-width: 100%!important;
+		}
+        .well{
+            border:1px solid #3844ff !important ;
+        }
+        .uib-left{
+            color: #3844ff !important;
+        }
+        .uib-right{
+            color: #3844ff !important;
+        }
+        .text-info {
+            color: #3844ff !important;
+        }
+        .btn.btn-info.active{
+            color: #3844ff !important;
+        }
+		section,header{
+			padding: 13px;
+		}
+        .maintitle{
+			margin-bottom: 10px;
+			color: #3844ff;	
+            font-family: 'Concert One'
+		}
+		.message{
+			display: flex;
+			text-align: center;
+			justify-content: center;
+            background-color: #3844ff !important;
+            margin-bottom: 20px;
+            border-radius: 50px;
+		}
+		.message i{
+			margin-right: 5px;
+			font-size: 4em;
+		}
+		.message span{
+			display: flex;
+			justify-content: center;
+			align-items: center;			
+		}
+		p{
+			margin: 0;
+		}
+	
+		.btn-again{
+            font-family: 'Concert One';
+            font-size: xx-large;
+        }
+	    @media (min-width: 544px){
+			.col-sm-offset-3 {
+			    margin-left: 25%;
+			}
+		}
+	
+	    /* Extra Small Devices, Phones */ 
+	    @media only screen and (max-width : 480px) {
+			h2{
+				font-size: 2em;
+			}
+			h4{
+				font-size: 1.3em;
+			}
+	    }
+
+
+        /* footer */
+        .signature-footer{
+            display: inline;
+        }
+        .atr-logo{
+            font-size: 12.8px;
+            display: inline-flex;
+            
+        }
+        .atr-logo a{
+            text-decoration: none;
+        }
+        
+        .atr-logo .doors {
+            display: flex;
+            height: 1.78571em;
+        }
+        .atr-logo .door {
+            width: .57143em;
+            height: 1.07143em;
+            position: relative;
+            border-radius: .03571em;
+        }
+
+        .atr-logo .s-red {
+            background-color: #f35369;
+            margin-right: .14286em;
+            top: .35714em;
+        }
+        .atr-logo .s-yellow {
+            background-color: #ffc853;
+            margin-right: 2px;
+            top: .07143em;
+        }
+        .atr-logo .s-blue {
+            background-color: #54c7ec;
+            top: .57143em;
+        }
+
+        .brand{
+            margin-left: 5px;
+        }
+
+        .atr-logo .brand {
+            margin-left: .42857em;
+            font-size: 1.07143em;
+            font-weight: 700;
+            color: #1d2129;
+            vertical-align: middle;
+        }
+        footer{
+            background-color:beige
+        }
+    </style>
+</head>
+<body ng-app="mathBirthday">
+    <header>
+    <h1 class="maintitle text-center">My MathBirthday</h1>
+    <h4 class="text-center hidden-xs-down">Select your birthdate to know your special MathBirthday 🎉</h4> 
+    <h4 class="text-center sublogo"></h4>
+    </header>
+    <section>	  	
+        <div class="container-form" ng-controller="MainCtrl">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 text-center" style="min-height:290px;">
+                <div uib-datepicker ng-model="bitrhday" class="well well-sm datepicker" datepicker-options="options" datepicker-mode="mode"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3">
+                <div class="alert alert-info message" ng-show="message.length > 0">
+                    <span>		    				
+                        <p ng-bind-html="message">
+                            <!--display the final message here-->
+                        </p>
+                    </span>
+                </div>
+                <a ng-click="init()" href="javascript:void(0)" ng-show="message.length > 0" class="btn btn-again col-xs-12">
+                    Again?
+                </a>
+            </div>
+        </div>
+        </div>
+    </section>
+    <footer class="text-center">
+        <div class="signature-footer"> 
+            <div>
+                <p>Test made by <a href="">Luis Murillo <i class="fab fa-github"></i></a> from:</p>
+            </div>
+            <a class="atr-logo" href="https://www.alltherooms.com/">
+                <div class="doors">
+                    <div class="door s-red"></div>
+                    <div class="door s-yellow"></div>
+                    <div class="door s-blue"></div>
+                </div>
+                <div class="brand">AllTheRooms.</div>
+            </a>
+           
+        </div>
+    </footer>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/ripples.min.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+	   <script type="text/javascript">
+        'use strict';
+        var app = angular.module('mathBirthday', ['ngAnimate', 'ngSanitize', 'ui.bootstrap']);
+        app.controller('MainCtrl', ['$scope', '$timeout', mainctrl]);
+        function mainctrl ($scope,$timeout) {
+			$scope.options = {
+				showWeeks: false,
+				datepickerMode:'year'
+			};
+			$scope.init = function () {				
+				$scope.message = '';
+				$scope.bitrhday = '';
+				var elementToggle = $("button[ng-click='toggleMode()']");
+				if (elementToggle) {
+					$timeout(function () {						
+						elementToggle.click();
+						elementToggle.click();
+					});
+				}
+			};
+			$scope.init();
+			var showMessage = function (daysRange,dateBirthday) {
+				var dateBirthdate = dateBirthday.format('DD-MM-YYYY');
+				var message = "🎂 Your next math birthday is your <strong>"+daysRange+"-day-old birthday</strong> on <strong>"+dateBirthdate+"</strong> date 🎈";
+				$scope.message = message;
+			};
+			var validateDaysAlive = function (days,dateUser) {
+				var daysLength = days.toString().length;
+				var nextMathbirthdayRange = Math.pow(10,daysLength);
+				var nextMathbirthdayDate = dateUser.add(nextMathbirthdayRange,'days');				
+				
+				showMessage(nextMathbirthdayRange,nextMathbirthdayDate);
+			};
+			var calculateMathBirthday = function (date) {
+				var dateUser = moment(date);
+				var dateNow = moment(Date.now());
+				var daysAlive = dateNow.diff(dateUser, 'days');
+				validateDaysAlive(daysAlive,dateUser);
+			};
+			$scope.$watch('bitrhday',function(){
+				if ($scope.bitrhday) {
+					calculateMathBirthday($scope.bitrhday);
+				}
+			});
+        };
+    </script>
+</body>
+</html>
